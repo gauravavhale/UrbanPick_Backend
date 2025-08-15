@@ -1,10 +1,8 @@
-const mongo = require ('mongodb')
+const getDbConnection = require('../Comman/Serviceprovider')
 
 async function getProductsDao(){
     try{
-        const mongoClient = mongo.MongoClient
-        const mongoServer = await mongoClient.connect('mongodb+srv://avhalegaurav07:broispro.07@swift-cart.ajzmudj.mongodb.net/')
-        const db = mongoServer.db('swift-cart')
+        const db = await getDbConnection()
         const collection = db.collection('product')
         const res = await collection.find({}).toArray();
         console.log(res)
@@ -17,9 +15,7 @@ async function getProductsDao(){
 
 async function getProductsByCatDao(category){
     try{
-        const mongoClient = mongo.MongoClient
-        const mongoServer = await mongoClient.connect('mongodb+srv://avhalegaurav07:broispro.07@swift-cart.ajzmudj.mongodb.net/')
-        const db = mongoServer.db('swift-cart')
+        const db = await getDbConnection()
         const collection = db.collection('product')
         const res = await collection.find({category : category}).toArray();
         console.log(res)
