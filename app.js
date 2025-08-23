@@ -10,7 +10,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productCtrl = require('./app/Controller/productsCtrl')
-var authCtrl = require('/')
+var authCtrl = require('./app/Controller/authCtrl')
 
 var app = express();
 
