@@ -5,6 +5,12 @@ async function signInUser(data){
     return res
 }
 
+async function loginUser(data){
+    const res = await daoLayer.loginDao(data)
+    return res
+}
+
 module.exports = {
-    signInUser
+    signInUser,
+    loginUser
 }
