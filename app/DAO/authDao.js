@@ -26,17 +26,17 @@ async function loginDao(data){
     try{
         const db = await getDbConnection()
         const collection = db.collection('users')
-        const result = collection.findOne({email : data.email})
+        const result = await collection.findOne({email : data.email})
         if(!result){
         throw new Error('User Not Registered')
         }
         if(result.password !== data.password){
         throw new Error('Wrong Password')
         }
-        console.log(result)
         return result
     } catch (error){
-
+        console.error(error.message);
+        throw error;
     }
 }
 
