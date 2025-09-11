@@ -6,7 +6,7 @@ async function signInDao (data) {
         const collection = db.collection('users')
         const existingUSer = await collection.findOne({email : data.email})
         if(existingUSer){
-            throw new Error ('User Already Exists')
+            throw new Error ('User Already Exists, Try Login')
         }
         const regUser = await collection.insertOne(data)
         if(regUser.acknowledged){
@@ -33,7 +33,8 @@ async function loginDao(data){
         if(result.password !== data.password){
         throw new Error('Wrong Password')
         }
-        return result
+        const { password , ...user } = result
+        return user
     } catch (error){
         console.error(error.message);
         throw error;

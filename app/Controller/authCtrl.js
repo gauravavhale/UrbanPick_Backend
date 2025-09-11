@@ -28,7 +28,7 @@ router.post('/login', async function(req,res,next){
         })
     } catch(error){
         if (error.message === 'User Not Registered') {
-      return res.status(404).json({ success: false, message: error.message });
+             return res.status(404).json({ success: false, message: error.message });
     }
 
     if (error.message === 'Wrong Password') {
